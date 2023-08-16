@@ -8,10 +8,10 @@ import time
 
 
 class CrawlGdistribReviews:
-	def __init__(self, gdistrib_name: str, output_directory: str, nb_reviews: Optional[int] = None):
+	def __init__(self, gdistrib_name: str, save_directory: str, nb_reviews: Optional[int] = None):
 		self.url = os.path.join("https://fr.custplace.com", f"{gdistrib_name}")
 		self.gdistrib_name = gdistrib_name
-		self.output_directory = output_directory
+		self.save_directory = save_directory
 		self.nb_reviews = nb_reviews
 
 	@staticmethod
@@ -88,7 +88,7 @@ class CrawlGdistribReviews:
 		driver.quit()
 
 		# Save reviews
-		with open(os.path.join(self.output_directory, f"{self.gdistrib_name}.txt"), "w") as f:
+		with open(os.path.join(self.save_directory, f"{self.gdistrib_name}.txt"), "w") as f:
 			for review in reviews_and_ratings:
 				f.write(review)
 				f.write("\n")
